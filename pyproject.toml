@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pathlyhq-pathly-dev"
+version = "0.1.0"
+description = "Dev/test dependencies for pathlyhq.pathly Ansible collection"
+requires-python = ">=3.9"
+dependencies = []
+
+[project.urls]
+Homepage = "https://pathlyhq.com"
+Documentation = "https://pathlyhq.com/en/developers"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0",
+  "pytest-cov>=4.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.coverage.run]
+branch = true
+source = [
+  "plugins/module_utils",
+  "plugins/modules",
+]
+omit = [
+  "plugins/modules/__init__.py",
+  "plugins/module_utils/__init__.py",
+]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+exclude_lines = [
+  "pragma: no cover",
+  "if __name__ == .__main__.:",
+]

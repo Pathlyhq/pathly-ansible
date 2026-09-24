@@ -1,0 +1,58 @@
+---
+- name: Pathly complete example
+  hosts: localhost
+  gather_facts: false
+  vars:
+    pathly_shop_url: "https://shop.example.com/"
+  tasks:
+    - name: Ensure HTTP scenario
+      pathlyhq.pathly.pathly_scenario:
+        name: Home page
+        url: "{{ pathly_shop_url }}"
+        interval_sec: 300
+        expect_text: Our products
+        severity: major
+        folder: Shop
+        tags:
+          - prod
+      register: home
+
+    - name: Show scenario id
+      ansible.builtin.debug:
+        var: home.scenario.id
+
+    - name: Create outbound webhook
+      pathlyhq.pathly.pathly_webhook:
+        url: "{{ lookup('env', 'PATHLY_WEBHOOK_URL') }}"
+        events:
+          - run.failed
+          - run.recovered
+      register: alerts
+      no_log: true
+      when: lookup('env', 'PATHLY_WEBHOOK_URL') | length > 0
+
+    - name: Weekly maintenance window
+      pathlyhq.pathly.pathly_maintenance_window:
+        weekday: 7
+        start_minute: 180
+        duration_min: 120
+        reason: Weekly backup
+      register: backup
+
+    - name: SLA target for the scenario
+      pathlyhq.pathly.pathly_sla_target:
+        scenario_id: "{{ home.scenario.id }}"
+        name: Home page — 99.9 %
+        objective_pct: 99.9
+        window_days: 30
+        exclude_maintenance: true
+        warn_at_budget_ratio: 0.8
+      register: sla
+
+    - name: List scenarios
+      pathlyhq.pathly.pathly_scenario_info:
+      register: inventory
+
+    - name: Scenario count
+      ansible.builtin.debug:
+        msg: "{{ inventory.scenarios | length }} scenario(s)"

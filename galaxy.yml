@@ -1,0 +1,34 @@
+---
+namespace: pathlyhq
+name: pathly
+version: 0.1.0
+readme: README.md
+authors:
+  - Simon Raynaud / keyral (Pathly)
+  - Pathly <support@pathlyhq.com>
+description: Ansible modules to manage Pathly monitoring resources (scenarios, webhooks, maintenance windows, SLA targets).
+license:
+  - Apache-2.0
+tags:
+  - monitoring
+  - pathly
+  - cloud
+  - infrastructure
+dependencies: {}
+repository: https://github.com/pathlyhq/pathly-ansible
+documentation: https://pathlyhq.com/en/developers
+homepage: https://pathlyhq.com
+issues: https://github.com/pathlyhq/pathly-ansible/issues
+build_ignore:
+  - .git
+  - .gitignore
+  - .gitlab-ci.yml
+  - Makefile
+  - pyproject.toml
+  - requirements-dev.txt
+  - tests
+  - .pytest_cache
+  - .coverage
+  - htmlcov
+  - "*.pyc"
+  - __pycache__
