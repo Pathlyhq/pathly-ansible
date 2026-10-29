@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "include-component-in-tag": false,
+  "bootstrap-sha": "afbf79828646ca3f5058f19d2525ef06380ef1d0",
+  "packages": {
+    ".": {
+      "release-type": "python",
+      "changelog-path": "CHANGELOG.md",
+      "bump-minor-pre-major": true,
+      "package-name": "pathly",
+      "extra-files": [
+        { "type": "yaml", "path": "galaxy.yml", "jsonpath": "$.version" },
+        "plugins/module_utils/pathly_api.py"
+      ]
+    }
+  }
+}
