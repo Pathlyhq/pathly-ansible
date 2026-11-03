@@ -90,7 +90,7 @@ make test
 
 | Package | Role |
 |---|---|
-| [pathly-terraform-provider](https://github.com/pathlyhq/pathly-terraform-provider) | Terraform / OpenTofu |
+| [terraform-provider-pathly](https://github.com/Pathlyhq/terraform-provider-pathly) | Terraform / OpenTofu |
 | [pathly-sdk-python](https://github.com/pathlyhq/pathly-sdk-python) | Python SDK |
 | [pathly-pulumi](https://github.com/pathlyhq/pathly-pulumi) | Pulumi |
 | [pathly-crossplane](https://github.com/pathlyhq/pathly-crossplane) | Crossplane |

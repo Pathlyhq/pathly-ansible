@@ -1,4 +1,4 @@
-# Same checks as .gitlab-ci.yml (pytest, 100 % branch coverage).
+# CI checks (pytest, 100 % branch coverage).
 name: CI
 
 on:
