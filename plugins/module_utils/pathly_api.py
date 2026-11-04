@@ -20,7 +20,7 @@ MAX_ATTEMPTS = 4
 MAX_RETRY_WAIT = 90.0
 PAGE_SIZE = 200
 MAX_PAGES = 200
-USER_AGENT = "pathly-ansible/0.1.0"
+USER_AGENT = "pathly-ansible/0.1.0"  # x-release-please-version
 
 
 class PathlyAPIError(Exception):

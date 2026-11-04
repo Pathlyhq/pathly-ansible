@@ -22,7 +22,6 @@ issues: https://github.com/pathlyhq/pathly-ansible/issues
 build_ignore:
   - .git
   - .gitignore
-  - .gitlab-ci.yml
   - Makefile
   - pyproject.toml
   - requirements-dev.txt
